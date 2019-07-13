@@ -16,4 +16,16 @@ describe('futurama tests', () => {
       });
   });
 
+  it('can get an array of profiles with GET', () => {
+    return request(app)
+      .get('/api/v1/profiles')
+      .then(res => {
+        expect(res.body).toEqual([{
+          name: 'Dirt',
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String)
+        }]);
+      });
+  });
+
 });
