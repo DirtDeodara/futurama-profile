@@ -28,4 +28,29 @@ describe('futurama tests', () => {
       });
   });
 
+  it('can get a profile by index', () => {
+    return request(app)
+      .get('/api/v1/profiles/0')
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'Dirt',
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String)
+        });
+      });
+  });
+
+  it('can update a profile with PATCH', () => {
+    return request(app)
+      .patch('/api/v1/profiles/0')
+      .send({ favoriteCharacter: 'Fry' })
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'Dirt',
+          favoriteCharacter: 'Fry',
+          tagline: expect.any(String)
+        });
+      });
+  });
+
 });
