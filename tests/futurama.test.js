@@ -53,4 +53,16 @@ describe('futurama tests', () => {
       });
   });
 
+  it('can delete an profile by index', () => {
+    return request(app)
+      .delete('/api/v1/profiles/0')
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'Dirt',
+          favoriteCharacter: 'Fry',
+          tagline: expect.any(String)
+        });
+      });
+  });
+
 });
