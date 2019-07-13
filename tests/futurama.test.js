@@ -10,8 +10,10 @@ describe('futurama tests', () => {
       .then(res => {
         expect(res.body).toEqual({
           name: 'Dirt',
-          favoriteCharacter: 'Bender'
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String)
         });
       });
   });
+
 });
